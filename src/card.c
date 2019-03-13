@@ -7,21 +7,7 @@
 const char suitStrings[][10] = {"Hearts", "Diamonds", "Clubs", "Spades"};
 const char faceStrings[][10] = {"Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Jack","Queen","King", "Ace"};
 
-int cardsDealt = 0, heartsDealt = 0, diamondsDealt = 0, clubsDealt = 0, spadesDealt = 0;
-
-int twosDealt = 0,
-  threesDealt = 0,
-  foursDealt = 0,
-  fivesDealt = 0,
-  sixesDealt = 0,
-  sevensDealt = 0,
-  eightsDealt = 0,
-  ninesDealt = 0,
-  tensDealt = 0,
-  jacksDealt = 0,
-  queensDealt = 0,
-  kingsDealt = 0,
-  acesDealt = 0;
+int cardsDealt = 0;
 
 int suitsDealt[4] = {0,0,0,0};
 int facesDealt[12] = {0,0,0,0,0,0,0,0,0,0,0,0};
@@ -81,8 +67,7 @@ void suitCounter(card thisCard){
 
 void faceCounter(card thisCard){
   facesDealt[thisCard.face] += 1;
-   printf("%s Dealt: %d", printCardFace(thisCard), facesDealt[thisCard.face]);
-  
+  printf("%s Dealt: %d", printCardFace(thisCard), facesDealt[thisCard.face]);
 }
 
 void dealCard(card thisCard){
@@ -99,4 +84,3 @@ void dealCard(card thisCard){
   faceCounter(thisCard);
   printf("\n\n");
  }
-
