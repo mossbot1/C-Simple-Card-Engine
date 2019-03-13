@@ -20,6 +20,10 @@ typedef struct {
 //Make the deck of card objects
 void createCards(card cards[]);
 
+const char * printCardSuit(card thisCard);
+
+const char * printCardFace(card thisCard);
+
 //To string of cards (Two Of Hearts)
 void printCard(card thisCard);
 
@@ -34,6 +38,9 @@ void dealCard();
 
 //Used for counting how many of each suit is dealt.
 void suitCounter(card thisCard);
+
+//Used for counting how many of each face is dealt
+void faceCounter(card thisCard);
 
 //print current cards dealt
 void printCardsDealt();
