@@ -7,22 +7,22 @@
 
 
 int main(){
+
+  printf("--C CARD GAME -----------------MOSSBOT1\n\n");
   srand(time(NULL));
   card cards[52];
   
   createCards(cards);
+  printf("--DECK CREATED\n\n");
 
-  printCard(cards[0]);
-  printCardEnums(cards[0]);
-
-  
   shuffleCards(cards, 52);
+  printf("--DECK SHUFFLED\n\n");
 
-  printCard(cards[0]);
-  printCardEnums(cards[0]);
+  dealCard(cards[0]);
+  dealCard(cards[1]);
+  dealCard(cards[2]);
+  dealCard(cards[3]);
+  dealCard(cards[4]);
 
-  dealCard();
-  printCardsDealt();
-  dealCard();
-  printCardsDealt();
+  printf("--GAME END-----------------\n\n");
 }
