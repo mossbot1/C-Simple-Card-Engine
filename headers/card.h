@@ -30,7 +30,10 @@ void printCardEnums(card thisCard);
 void shuffleCards(card cards[], int n);
 
 //Add 1 to card dealt counter, return current cards dealt after;
-int dealCard();
+void dealCard();
+
+//Used for counting how many of each suit is dealt.
+void suitCounter(card thisCard);
 
 //print current cards dealt
 void printCardsDealt();
