@@ -9,7 +9,24 @@ const char faceStrings[][10] = {"Two","Three","Four","Five","Six","Seven","Eight
 
 int cardsDealt = 0, heartsDealt = 0, diamondsDealt = 0, clubsDealt = 0, spadesDealt = 0;
 
+int twosDealt = 0,
+  threesDealt = 0,
+  foursDealt = 0,
+  fivesDealt = 0,
+  sixesDealt = 0,
+  sevensDealt = 0,
+  eightsDealt = 0,
+  ninesDealt = 0,
+  tensDealt = 0,
+  jacksDealt = 0,
+  queensDealt = 0,
+  kingsDealt = 0,
+  acesDealt = 0;
 
+int suitsDealt[4] = {0,0,0,0};
+int facesDealt[12] = {0,0,0,0,0,0,0,0,0,0,0,0};
+
+//fill blank card array with card objects
 void createCards(card cards[]){
 
   int counter = 0;
@@ -23,12 +40,20 @@ void createCards(card cards[]){
   }
 }
 
+const char * printCardSuit(card thisCard){
+  return suitStrings[thisCard.suit];
+}
+
+const char * printCardFace(card thisCard){
+  return faceStrings[thisCard.face];
+}
+
 void printCard(card thisCard){
-  printf("%s Of %s ", faceStrings[thisCard.face], suitStrings[thisCard.suit] );
+  printf("%s Of %s", printCardFace(thisCard), printCardSuit(thisCard));
 }
 
 void printCardEnums(card thisCard){
-  printf("%d Of %d ", thisCard.face, thisCard.suit);
+  printf("%d Of %d", thisCard.face, thisCard.suit);
 }
 
 void shuffleCards(card cards[], int n){
@@ -46,50 +71,32 @@ void shuffleCards(card cards[], int n){
 
 
 void  printCardsDealt(){
-  printf("Cards Dealt = %d " , cardsDealt);
+  printf("Cards Dealt: %d" , cardsDealt);
 }
 
 void suitCounter(card thisCard){
-   switch(thisCard.suit){
+  suitsDealt[thisCard.suit] += 1;
+  printf("%s Dealt:  %d", printCardSuit(thisCard), suitsDealt[thisCard.suit]);
+}
 
-  case 0:
-    heartsDealt++;
-    printf("Hearts Dealt = %d ", heartsDealt);
-    break;
-
-  case 1:
-    diamondsDealt++;
-    printf("Diamonds Dealt = %d ", diamondsDealt);
-    break;
-
-  case 2:
-    clubsDealt++;
-    printf("Clubs Dealt = %d ", clubsDealt);
-    break;
-
-  case 3:
-    spadesDealt++;
-    printf("Spades Dealt = %d ", spadesDealt);
-    break;
-
-  default:
-    printf("ERROR: suit unknown ");
-    break;
-   }
+void faceCounter(card thisCard){
+  facesDealt[thisCard.face] += 1;
+   printf("%s Dealt: %d", printCardFace(thisCard), facesDealt[thisCard.face]);
+  
 }
 
 void dealCard(card thisCard){
-  printf("--DEAL CARD---------------------------\n");
   printCard(thisCard);
-  printf("\t\t");
+  printf(" |");
   printCardEnums(thisCard);
 
-  printf("\n");
+  printf(" |");
   cardsDealt++;
   printCardsDealt();
-   printf("\t");
+   printf(" |");
   suitCounter(thisCard);
+  printf(" |");
+  faceCounter(thisCard);
   printf("\n\n");
  }
-
 
