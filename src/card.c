@@ -7,7 +7,7 @@
 const char suitStrings[][10] = {"Hearts", "Diamonds", "Clubs", "Spades"};
 const char faceStrings[][10] = {"Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Jack","Queen","King", "Ace"};
 
-int cardsDealt = 0;
+int cardsDealt = 0, heartsDealt = 0, diamondsDealt = 0, clubsDealt = 0, spadesDealt = 0;
 
 
 void createCards(card cards[]){
@@ -24,11 +24,11 @@ void createCards(card cards[]){
 }
 
 void printCard(card thisCard){
-  printf("%s Of %s \n", faceStrings[thisCard.face], suitStrings[thisCard.suit] );
+  printf("%s Of %s ", faceStrings[thisCard.face], suitStrings[thisCard.suit] );
 }
 
 void printCardEnums(card thisCard){
-  printf("%d Of %d \n", thisCard.face, thisCard.suit);
+  printf("%d Of %d ", thisCard.face, thisCard.suit);
 }
 
 void shuffleCards(card cards[], int n){
@@ -44,11 +44,52 @@ void shuffleCards(card cards[], int n){
   }
 }
 
-int dealCard(){
-  cardsDealt++;
-  return cardsDealt;
-}
 
 void  printCardsDealt(){
-  printf("Cards dealt - %d \n" , cardsDealt);
+  printf("Cards Dealt = %d " , cardsDealt);
 }
+
+void suitCounter(card thisCard){
+   switch(thisCard.suit){
+
+  case 0:
+    heartsDealt++;
+    printf("Hearts Dealt = %d ", heartsDealt);
+    break;
+
+  case 1:
+    diamondsDealt++;
+    printf("Diamonds Dealt = %d ", diamondsDealt);
+    break;
+
+  case 2:
+    clubsDealt++;
+    printf("Clubs Dealt = %d ", clubsDealt);
+    break;
+
+  case 3:
+    spadesDealt++;
+    printf("Spades Dealt = %d ", spadesDealt);
+    break;
+
+  default:
+    printf("ERROR: suit unknown ");
+    break;
+   }
+}
+
+void dealCard(card thisCard){
+  printf("--DEAL CARD---------------------------\n");
+  printCard(thisCard);
+  printf("\t\t");
+  printCardEnums(thisCard);
+
+  printf("\n");
+  cardsDealt++;
+  printCardsDealt();
+   printf("\t");
+  suitCounter(thisCard);
+  printf("\n\n");
+ }
+
+
