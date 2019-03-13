@@ -5,48 +5,34 @@
 #include <stdlib.h>
 #include <time.h>
 
-typedef struct {
-char suit[10];
-char num[10];
-}card;
+typedef enum{heart, diamond, club, spade} Suit;
+typedef enum{two, three, four, five, six, seven, eight, nine, ten, jack, queen, king , ace}  Face;
 
-int cardsDealt = 0;
+
+typedef struct {
+  Suit suit;
+  Face face;
+}card;
 
 #define N_SUITS 4
 #define N_NUMS 13
-void  createCards(card cards[]){
-  
-  char suits[][10] = {"Hearts", "Diamonds", "Clubs", "Spades"};
-  char nums[][10] = {"Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Jack","Queen","King", "Ace"};
 
-  int counter = 0;
+//Make the deck of card objects
+void createCards(card cards[]);
 
-  for(int i = 0; i < N_SUITS; i++ ){
-    for(int j = 0; j < N_NUMS; j++){
-      strcpy(cards[counter].suit, " ");
-      strcat(cards[counter].suit, suits[i]);
-      strcpy(cards[counter].num, " ");
-      strcat(cards[counter].num, nums[j]);
-      counter++;
-    }
-  }
-}
+//To string of cards (Two Of Hearts)
+void printCard(card thisCard);
 
-void printCard(card thisCard){
-  printf("The %s of %s \n", thisCard.num, thisCard.suit);
-}
+//to string of card enum positions (0 Of 0)
+void printCardEnums(card thisCard);
 
-void shuffleCards(card cards[], int n){
- 
-  int i,j;
-  card tmp;
-  
-  for( i = n -1; i >=  0; i--){
-    j = rand() % (i + 1);
-    tmp = cards[j];
-    cards[j] = cards[i];
-    cards[i] = tmp;
-  }
-}
+//Fisher-Yates Shuffle
+void shuffleCards(card cards[], int n);
+
+//Add 1 to card dealt counter, return current cards dealt after;
+int dealCard();
+
+//print current cards dealt
+void printCardsDealt();
 
 #endif
