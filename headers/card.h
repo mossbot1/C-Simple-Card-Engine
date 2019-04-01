@@ -5,13 +5,9 @@
 #include <stdlib.h>
 #include <time.h>
 
-typedef enum{heart, diamond, club, spade} Suit;
-typedef enum{two, three, four, five, six, seven, eight, nine, ten, jack, queen, king , ace}  Face;
-
-
 typedef struct {
-  Suit suit;
-  Face face;
+  int suit;
+  int face;
 }card;
 
 #define N_SUITS 4
