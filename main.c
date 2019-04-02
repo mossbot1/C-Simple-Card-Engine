@@ -1,55 +1,46 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
-#include "./headers/card.h"
-#include "./headers/player.h"
-
-
-void printall(card cards[], int  max);
+#include "headers/card.h"
+#include "headers/player.h"
 
 int main(){
 
-  printf("--C CARD GAME -----------------MOSSBOT1\n\n");
   srand(time(NULL));
-  card cards[52];
+  Card cards[52];
   
-  createCards(cards);
+  card_createAll(cards);
   printf("--DECK CREATED\n");
 
-  shuffleCards(cards, 52);
+
+  card_shuffle(cards, 52);
   printf("--DECK SHUFFLED\n");
 
-  printall(cards, 6);
+  card_printInt(cards[0]);
+  card_printInt(cards[1]);
+  card_printInt(cards[2]);
+  card_printInt(cards[3]);
+  card_printInt(cards[4]);
+  card_printInt(cards[5]);
+  printf("\n\n");
+
+  int numPlayers = 3;
+  Player players[numPlayers];
+  player_createAll(players, numPlayers);
+  //player_printAllNames(players);
+
+  int handSize = 2;
+
+  player_drawAllCards(players, cards, numPlayers, handSize);
+
+  player_printHand(&players[0], handSize);
+  player_printHand(&players[1], handSize);
+  player_printHand(&players[2], handSize);
   
-  int playerCount = 2;
-  int handSize = 4;
-  int cardCount = 0;
-  player players[playerCount];
-  createPlayers(players, playerCount);
-  printf("--PLAYERS CREATED\n");
-  //printAllNames(players);
-
-  for(int i = 0; i < 4; i++){  
-  changeCard(players[0].hand, cards, i, i);
-  }
-    
-
+  printf("\n\n");
   
-  
-  printf("%d of %d \n", players[0].hand[0].face, players[0].hand[0].suit);
-  printf("%d of %d \n", players[0].hand[1].face, players[0].hand[1].suit);
-  printf("%d of %d \n", players[0].hand[2].face, players[0].hand[2].suit);
-  printf("%d of %d \n", players[0].hand[3].face, players[0].hand[3].suit);
-  printf("%d of %d \n", players[0].hand[4].face, players[0].hand[4].suit);
-  printf("%d of %d \n", players[0].hand[5].face, players[0].hand[5].suit);
-
-
-  printf("--GAME END-----------------\n");
+  return 0;
 }
 
-void printall(card cards[], int  max){
-  for(int i = 0; i < max; i++){
-    printf("%d of %d \n", cards[i].face, cards[i].suit);
-  }
-}
