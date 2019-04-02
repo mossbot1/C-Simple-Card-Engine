@@ -7,15 +7,24 @@ typedef struct {
   int id;
   int name;
   int cardsInHand;
-  card hand[];
-}player;
+  Card hand[7];
+}Player;
 
-void createPlayers(player players[], int count);
+void player_create(Player *player);
 
-void printAllNames(player players[]);
+void player_createAll(Player players[], int count);
 
-void drawCards(player players[], card cards[], int numPlayers, int handSize);
+void player_printName(Player *player);
 
-void changeCard(card hand[], card cards[], int handpos,  int cardpos);
+void player_printAllNames(Player players[]);
+
+void player_drawCard(Card *hand, Card *card);
+
+void player_drawAllCards(Player players[], Card cards[], int numPlayers, int handSize);
+
+void player_printCard(Player *player, int pos);
+
+void player_printHand(Player *player, int handSize);
   
 #endif
+
