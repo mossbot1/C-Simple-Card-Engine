@@ -1,5 +1,6 @@
 # C-Simple-Card-Engine
 Card engine for card games
 
-Work in Progress, some parts being re-written to include linked lists and proper pointer use.
-Code is temporarily being stored here online for convenience. 
+Current version:
+  functions capable of creating a deck, shuffling it, and dealing cards to players.
+  Keeps track of how many cards are dealt as well as how many suits and faces are dealt(in case this mechanic is needed later).
