@@ -5,6 +5,7 @@
 
 #include "headers/card.h"
 #include "headers/player.h"
+#include "headers/global.h"
 
 int main(){
 
@@ -18,29 +19,27 @@ int main(){
   card_shuffle(cards, 52);
   printf("--DECK SHUFFLED\n");
 
+  //DEBUGGING: print first 4 cards in deck
   card_printInt(cards[0]);
+  printf("\n");
   card_printInt(cards[1]);
+  printf("\n");
   card_printInt(cards[2]);
+  printf("\n");
   card_printInt(cards[3]);
-  card_printInt(cards[4]);
-  card_printInt(cards[5]);
-  printf("\n\n");
+  printf("\n");
 
-  int numPlayers = 3;
+  //CREATE PLAYERS
+  int numPlayers = 2;
   Player players[numPlayers];
   player_createAll(players, numPlayers);
   //player_printAllNames(players);
 
-  int handSize = 2;
+  player_drawAllCards(players, cards, numPlayers, maxHandSize);
 
-  player_drawAllCards(players, cards, numPlayers, handSize);
+  Player_printAllHands(players, maxHandSize);
 
-  player_printHand(&players[0], handSize);
-  player_printHand(&players[1], handSize);
-  player_printHand(&players[2], handSize);
-  
-  printf("\n\n");
+  card_printDeals();
   
   return 0;
 }
-
